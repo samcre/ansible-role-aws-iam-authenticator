@@ -1,0 +1,30 @@
+---
+- name: Resolves platform specific vars
+  include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+      skip: true
+      paths:
+        - "{{ role_path }}/vars"
+
+- name: Creates target directory
+  become: "{{ aws_iam_authenticator_privilege_escalate }}"
+  become_user: root
+  file:
+    path: "{{ aws_iam_authenticator_install_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Gets binary for aws-iam-authenticator from GitHub
+  become: "{{ aws_iam_authenticator_privilege_escalate }}"
+  become_user: root
+  get_url:
+    url: "{{ aws_iam_authenticator_release_url }}"
+    dest: "{{ aws_iam_authenticator_install_dir }}/{{ aws_iam_authenticator_bin }}"
+    force: yes
+    owner: "root"
+    group: "root"
+    mode: "0755"

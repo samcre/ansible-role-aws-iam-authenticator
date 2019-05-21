@@ -1,0 +1,4 @@
+---
+aws_iam_authenticator_os: "{{ ansible_system|lower }}"
+aws_iam_authenticator_bin: '{{ aws_iam_authenticator_name }}{{ aws_iam_authenticator_suffix|default("") }}'
+aws_iam_authenticator_install_dir: "/usr/local/bin"

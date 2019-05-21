@@ -1,0 +1,7 @@
+---
+aws_iam_authenticator_name: "aws-iam-authenticator"
+aws_iam_authenticator_version: "0.4.0"
+aws_iam_authenticator_arch: "amd64"
+aws_iam_authenticator_base_url: "https://github.com/kubernetes-sigs/{{ aws_iam_authenticator_name }}/releases/download"
+aws_iam_authenticator_release_url: "{{ aws_iam_authenticator_base_url }}/v{{ aws_iam_authenticator_version }}/{{ aws_iam_authenticator_name }}_{{ aws_iam_authenticator_version }}_{{ aws_iam_authenticator_os }}_{{ aws_iam_authenticator_arch }}"
+aws_iam_authenticator_privilege_escalate: True
