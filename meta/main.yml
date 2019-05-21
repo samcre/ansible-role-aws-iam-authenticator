@@ -1,5 +1,6 @@
 galaxy_info:
   author: samcre
+  role_name: aws-iam-authenticator
   description: "A simple Ansible role that installs aws-iam-authenticator on system."
   company: "IronHack"
   license: "GPL-3.0-only"
